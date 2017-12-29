@@ -6,8 +6,9 @@
 #include <map>
 #include <boost/shared_ptr.hpp>
 #include <object_model/object_model.h>
+#include "C:\Users\mianb\Desktop\PluginFramework\projects\plugin_framework/plugin.h"
 
-struct PF_ObjectParams;
+//struct PF_ObjectParams;
 
 class FidgetyPhantom : public IActor
 {
@@ -21,9 +22,11 @@ public:
   // IActor methods
   virtual void getInitialInfo(ActorInfo * info);
   virtual void play(ITurn * turnInfo);
+  void log(std::string log);
   
 private:
-  FidgetyPhantom();
+  FidgetyPhantom(PF_ObjectParams * para);
+  PF_ObjectParams m_params;
 };
 
 #endif

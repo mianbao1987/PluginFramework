@@ -25,6 +25,7 @@ struct IActor
 {
   virtual void getInitialInfo(ActorInfo * info) = 0;
   virtual void play(ITurn * turnInfo) = 0;
+  //virtual void log(std::string & log) = 0;
 };
 
 #endif

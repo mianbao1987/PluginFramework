@@ -6,16 +6,14 @@
 #include "plugin_framework/Path.h"
 #include "BattleManager.h"
 #include "static_plugin/static_plugin.h"
+#include "utils/utils.h"
 #include <string>
 #include <iostream>
 
 using std::cout;
 using std::endl;
 
-apr_int32_t DummyInvokeService(const apr_byte_t * serviceName, void * serviceParams)
-{
-  return 0;
-}
+
 
 #ifdef WIN32
 int _tmain(int argc, _TCHAR* argv[])

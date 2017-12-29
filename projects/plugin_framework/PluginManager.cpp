@@ -1,5 +1,6 @@
 
 #include <string>
+#include <iostream>
 
 #include <apr-1/apr_network_io.h> // for APR_PATH_MAX
 
@@ -61,6 +62,19 @@ apr_int32_t PluginManager::registerObject(const apr_byte_t * objectType, const P
   return 0; 
 }
 
+/*
+apr_int32_t PluginManager::invokeService(const apr_byte_t * serviceName, void * serviceParams)
+{
+	if (serviceName == NULL)
+	{
+		return -1;
+	}
+	std::cout << "----------------------" << std::endl;
+	std::cout << "**" << serviceName << "**" << std::endl;
+	std::cout << "----------------------" << std::endl;
+	return 0;
+}*/
+
 // ---------------------------------------------------------------
 
 PluginManager & PluginManager::getInstance()
@@ -76,7 +90,12 @@ apr_int32_t PluginManager::loadAll(const std::string & pluginDirectory, PF_Invok
   if (pluginDirectory.empty()) // Check that the path is non-empty.
     return -1;
 
-  platformServices_.invokeService = func;
+  if (func != NULL)
+  {
+	  platformServices_.invokeService = func;
+  }
+
+  //platformServices_.invokeService = invokeService;
 
   Path dir_path(pluginDirectory);
   if (!dir_path.exists() || !dir_path.isDirectory())

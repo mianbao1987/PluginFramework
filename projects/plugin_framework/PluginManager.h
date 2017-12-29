@@ -30,6 +30,9 @@ public:
   apr_int32_t shutdown();  
   static apr_int32_t registerObject(const apr_byte_t * nodeType, 
                                     const PF_RegisterParams * params);
+/*
+  static apr_int32_t invokeService(const apr_byte_t * serviceName, 
+									void * serviceParams);*/
   const RegistrationMap & getRegistrationMap();
   PF_PlatformServices & getPlatformServices();
 

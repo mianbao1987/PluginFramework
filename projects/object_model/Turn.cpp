@@ -105,7 +105,7 @@ void Turn::attack(apr_uint32_t id)
     doSingleFightSequence(*self, *foe);
     if (foe->health == 0)
     {
-      std::cout << self->name << " defeated " << foe->name << std::endl;
+		std::cout << self->name << " defeated " << foe->name << std::endl;
       return;
     }
 

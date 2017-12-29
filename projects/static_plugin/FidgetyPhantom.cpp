@@ -2,9 +2,9 @@
 #include <string.h>
 #include <utils/utils.h>
 
-void * FidgetyPhantom::create(PF_ObjectParams *)
+void * FidgetyPhantom::create(PF_ObjectParams * para)
 {
-  return new FidgetyPhantom();
+  return new FidgetyPhantom(para);
 }
 
 apr_int32_t FidgetyPhantom::destroy(void * p)
@@ -15,8 +15,10 @@ apr_int32_t FidgetyPhantom::destroy(void * p)
   return 0;
 }
 
-FidgetyPhantom::FidgetyPhantom()
+FidgetyPhantom::FidgetyPhantom(PF_ObjectParams * para)
 {
+	m_params.objectType = para->objectType;
+	m_params.platformServices = para->platformServices;
 }
 
 FidgetyPhantom::~FidgetyPhantom()
@@ -36,6 +38,7 @@ void FidgetyPhantom::getInitialInfo(ActorInfo * info)
   info->id = 0;
   info->location_x = 0;
   info->location_y = 0;
+  log("Create FidgetyPhantom finish");
 }
 
 void FidgetyPhantom::play( ITurn * turnInfo)
@@ -55,6 +58,12 @@ void FidgetyPhantom::play( ITurn * turnInfo)
   turnInfo->move(closest.first, closest.second);
   if (closest == p2)
     turnInfo->attack(foe->id);
+}
+
+void FidgetyPhantom::log(std::string log)
+{
+	const apr_byte_t * p_log = (const apr_byte_t*)(log.c_str());
+	m_params.platformServices->invokeService(p_log, NULL);
 }
 
 

@@ -15,6 +15,7 @@ public:
   // IActor methods
   virtual void getInitialInfo(ActorInfo * info);
   virtual void play(ITurn * turnInfo);
+
   
 private:
 

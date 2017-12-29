@@ -22,7 +22,7 @@ extern "C" PF_ExitFunc StaticPlugin_InitPlugin(const PF_PlatformServices * param
   res = params->registerObject((const apr_byte_t *)"FidgetyPhantom", &rp);
   if (res < 0)
     return NULL;
-
+  params->invokeService((const apr_byte_t *)"Registe FidgetyPhantom", NULL);
   return StaticPlugin_ExitFunc;
 }
 

@@ -1,6 +1,7 @@
 #include "utils.h"
 #include <math.h>
 
+
 double calcDistance(Position p1, Position p2)
 {
   return ::sqrt((double)(p2.second - p1.second) * (p2.second - p1.second) + (p2.first - p1.first) * (p2.first - p1.first));
@@ -19,4 +20,3 @@ Position findClosest(Position p1, Position p2, apr_uint32_t movement)
 
   return Position(p1.first + dx, p1.second + dy);
 }
-
